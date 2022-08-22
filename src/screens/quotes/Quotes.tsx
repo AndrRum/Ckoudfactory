@@ -1,26 +1,29 @@
-import React, { useEffect } from "react";
-import { FlatList, ListRenderItemInfo, SafeAreaView, StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
-import { HeaderComponent } from "../../components/HeaderComponent";
-import { Tabs } from "../../navigation/components/navigationPages";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
-import { IPoloniexModelItem } from "../../models/poloniex.model";
-import { QuotesItemComponent } from "./components/QuotesItemComponent";
-import { Colors } from "../../globalTheme/colors";
-import { QuotesHeaderName } from "./components/QuotesHeaderName";
-import { store } from "../../store/store";
-import { observer } from "mobx-react";
-import { LoadingComponent } from "../../components/LoadingComponent";
-import { windowWidth } from "../../globalTheme/constants";
+import React, {useEffect} from "react";
+import {FlatList, ListRenderItemInfo, SafeAreaView, StyleSheet, Text, TextStyle, View, ViewStyle} from "react-native";
+import {HeaderComponent} from "../../components/HeaderComponent";
+import {Tabs} from "../../navigation/components/navigationPages";
+import {useIsFocused, useNavigation} from "@react-navigation/native";
+import {IPoloniexModelItem} from "../../models/poloniex.model";
+import {QuotesItemComponent} from "./components/QuotesItemComponent";
+import {Colors} from "../../globalTheme/colors";
+import {QuotesHeaderName} from "./components/QuotesHeaderName";
+import {inject, observer} from "mobx-react";
+import {LoadingComponent} from "../../components/LoadingComponent";
+import {windowWidth} from "../../globalTheme/constants";
+import {rootStore} from "../../store/rootStore";
 
-export const Quotes = observer(() => {
+const QuotesFc = () => {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
-  let intervalId: NodeJS.Timeout;
+  const store = rootStore.quotesStore;
+
+  let intervalId: NodeJS.Timer;
   useEffect(() => {
     store.fetchApiData();
     if (isFocused) {
       intervalId = setInterval(() => {
+        console.warn('time')
         store.fetchApiData();
       }, 5000);
     }
@@ -79,7 +82,9 @@ export const Quotes = observer(() => {
       <View style={styles.empty} />
     </SafeAreaView>
   );
-});
+};
+
+export const Quotes = inject('rootStore')(observer(QuotesFc));
 
 const styles = StyleSheet.create({
   container: {

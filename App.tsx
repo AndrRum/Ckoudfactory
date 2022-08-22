@@ -1,11 +1,11 @@
 import React from "react";
 import { RootNavigationContainer } from "./src/navigation/RootNavigationContainer";
 import { observer, Provider } from "mobx-react";
-import { store } from "./src/store/store";
+import {rootStore} from "./src/store/rootStore";
 
 const App = observer(() => {
   return (
-    <Provider store={store}>
+    <Provider rootStore={rootStore}>
       <RootNavigationContainer />
     </Provider>
   );
