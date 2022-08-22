@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   itemContainer: {
     width: windowWidth / 4.5,
+    borderWidth: 0.4,
+    borderColor: Colors.darkGrayishBlue,
     justifyContent: "center",
     alignItems: 'center'
   } as ViewStyle,

@@ -64,6 +64,7 @@ export const Quotes = () => {
             renderItem={renderItem}
             showsVerticalScrollIndicator={false}
             keyExtractor={item => item.id.toString()}
+            contentContainerStyle={styles.flatListContainer}
           />
         </View>
       </View>
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
     flex: 1,
   } as ViewStyle,
   elContainer: {
-    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center'
   } as ViewStyle,
   errorContainer: {
     backgroundColor: Colors.backRed,
@@ -94,6 +96,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: Colors.red,
+  } as ViewStyle,
+  flatListContainer: {
+    paddingHorizontal: 16,
   } as ViewStyle,
   empty: {
     height: 120,
