@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     flex: 1,
   } as ViewStyle,
   elContainer: {
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   } as ViewStyle,
   errorContainer: {
     backgroundColor: Colors.backRed,

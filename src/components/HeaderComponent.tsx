@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import { StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
 import { windowWidth } from "../globalTheme/constants";
@@ -20,7 +21,7 @@ export const HeaderComponent = ({title, onPressBack}: IProps) => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.backButtonContainer}>
-        <TouchableOpacity onPress={onPressBack} style={styles.touchableContainer}>
+        <TouchableOpacity onPress={_.debounce(onPressBack, 300)} style={styles.touchableContainer}>
           <Text>Back</Text>
         </TouchableOpacity>
       </View>

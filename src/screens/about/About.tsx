@@ -8,15 +8,14 @@ export const About = () => {
   const navigation = useNavigation();
 
   const navigationHandler = (): void => {
-    // @ts-ignore
-    navigation.navigate(Tabs.quotes)
+    navigation.navigate({ name: Tabs.quotes } as never);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.elementsContainer}>
         <Text>About</Text>
-        <TouchableOpacity style={styles.button} onPress={navigationHandler} >
+        <TouchableOpacity style={styles.button} onPress={navigationHandler}>
           <Text style={styles.buttonLabel}>Navigate to quotes</Text>
         </TouchableOpacity>
       </View>
@@ -36,12 +35,12 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.primary,
     borderRadius: 18,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 8,
-    paddingVertical: 8
+    paddingVertical: 8,
   } as ViewStyle,
   buttonLabel: {
-    color: Colors.tabBackground
-  } as TextStyle
+    color: Colors.tabBackground,
+  } as TextStyle,
 });
