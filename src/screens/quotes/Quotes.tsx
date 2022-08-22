@@ -23,7 +23,6 @@ const QuotesFc = () => {
     store.fetchApiData();
     if (isFocused) {
       intervalId = setInterval(() => {
-        console.warn('time')
         store.fetchApiData();
       }, 5000);
     }
